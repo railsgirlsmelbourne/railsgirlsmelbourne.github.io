@@ -126,18 +126,32 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ### *1.* Install Rails
 
-Download [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) and run it. Click through the installer using the default options.
+Search for `powershell` in the search bar.  Right click on powershell and choose "Run as administrator"
 
-Open `Command Prompt with Ruby on Rails` and run the following command:
+Click Yes to allow the app to make changes to your PC
+
+Copy the install text from the [Chocolatey](https://chocolatey.org) into the powershell window.
+
+If you don't ge tthe right result from powershell you can try the same thing in command prompt.
+
+Close and reopen the powershell as above.  Then type:
 
 {% highlight sh %}
-rails -v
+choco install cmder
 {% endhighlight %}
 
-If the Rails version is less than 4, update it using a following command:
+Note: If you see an error when installing cmder, you might need to install [Visual C++ Redistributable](https://www.microsoft.com/en-au/download/details.aspx?id=48145).
+
+
+Open `Cmder` and run the following command:
 
 {% highlight sh %}
-gem update rails --no-ri --no-rdoc
+choco install git
+choco install atom
+choco install sqlite
+choco install ruby
+choco install ruby2.devkit
+choco install nodejs
 {% endhighlight %}
 
 Make sure that all works well by running the application generator command.
@@ -148,88 +162,33 @@ cd railsgirls
 rails server
 {% endhighlight %}
 
-## Possible errors
+### *2.* Update your PATH to have atom in it
 
-### Gem::RemoteFetcher error
+Go to Control Panel
 
-If you get this error when running `rails new railsgirls` or `gem update rails`:
+Click on System Properties -> Advanced System Settings -> Advanced -> Environment Variables.
 
-{% highlight sh %}
-Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read
-server certificate B: certificate verify failed (https://rubygems.org/gems/i18n-
-0.6.11.gem)
-{% endhighlight %}
+Create a new system variable called ATOM, that will point to the folder of your  atom installation, a little bit like the screenshot below:
 
-This means you have an older version of Rubygems and will need to update it manually first verify your Rubygems version
+![ATOM variable](/images/system_property.png "ATOM variable in the system properties")
 
-{% highlight sh %}
-gem -v
-{% endhighlight %}
+Note: if you're on Windows 10 you just add this to your PATH directly via New :)
 
-If it is lower than `2.2.3` you will need to manually update it:
+Click OK to set the variable.
 
+Note: if you're on Windows 10 you won't need to do this :)
 
-First download the [ruby-gems-update gem](https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem). Move the file to `c:\\rubygems-update-2.2.3.gem` then run:
+Open the PATH variable and append:
 
 {% highlight sh %}
-gem install --local c:\\rubygems-update-2.2.3.gem
-update_rubygems --no-ri --no-rdoc
-gem uninstall rubygems-update -x
+;%ATOM%
 {% endhighlight %}
-
-Check your version of rubygems
-
-{% highlight sh %}
-gem -v
-{% endhighlight %}
-
-Make sure it is higher than `2.2.3`. Re-run the command that was failing previously.
-
-
-### 'x64_mingw' is not a valid platform` Error
-
-Sometimes you get the following error when running `rails server`:
-`'x64_mingw' is not a valid platform` If you experience this error after using the RailsInstaller you have to do a small edit to the file `Gemfile`:
-
-Look at the bottom of the file. You will probably see something like this as one of the last lines in the file:
-`gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`. If you have this line with `:x64_mingw`, then please delete the `:x64_mingw` part. In the end it should just say:
-`'tzinfo-data', platforms: [:mingw, :mswin]`
-
-After you did that, please use your Command Prompt again and type `bundle update`.
-
-### *2.* Install a text editor to edit code files
-
-For the workshop we recommend the text editor Atom.
-
-* [Download Atom and install it](https://github.com/atom/atom/releases/latest)
-  * Download an atom zip file for windows and decompress it.
-  * Copy the folder into your Program Files.
-  * Launch atom in the folder.
-
-If you are using Windows Vista or older versions, you can use another editor [Sublime Text 2](http://www.sublimetext.com/2).
-
-Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ### *3.* Update your browser
 
 If you use Internet Explorer, we recommend installing [Firefox](mozilla.org/firefox) or [Google Chrome](google.com/chrome).
 
 Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
-
-### *4.* Install node
-
-This is not strictly necessary, but it avoids a problem with and ExecJS::RuntimeError that might
-occur later  ([see stackoverflow](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial)).
-
-* Go to [https://nodejs.org/](https://nodejs.org/) and install node
-
-Check your version of node
-
-{% highlight sh %}
-node --version
-{% endhighlight %}
-
-Make sure it is higher than `0.12`. 
 
 <hr />
 
