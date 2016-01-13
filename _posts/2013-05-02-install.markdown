@@ -126,15 +126,15 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ### *1.* Install Rails
 
-Search for `powershell` in the search bar.  Right click on powershell and choose "Run as administrator"
+Search for `command prompt` in the search bar.  Right click on command prompt and choose "Run as administrator"
 
 Click Yes to allow the app to make changes to your PC
 
-Copy the install text from the [Chocolatey](https://chocolatey.org) into the powershell window.
+Copy the install text from the [Chocolatey](https://chocolatey.org) into the command prompt window.
 
-If you don't ge tthe right result from powershell you can try the same thing in command prompt.
+If you don't get the right result from command prompt you can try the same thing in powershell.
 
-Close and reopen the powershell as above.  Then type:
+Close and reopen the command prompt as above.  Then type:
 
 {% highlight sh %}
 choco install cmder
@@ -143,7 +143,9 @@ choco install cmder
 Note: If you see an error when installing cmder, you might need to install [Visual C++ Redistributable](https://www.microsoft.com/en-au/download/details.aspx?id=48145).
 
 
-Open `Cmder` and run the following command:
+Open `Cmder` It will be in `C:\\tools\cmder` if you can't find it through the search function
+
+run the following command:
 
 {% highlight sh %}
 choco install git
@@ -152,6 +154,7 @@ choco install sqlite
 choco install ruby
 choco install ruby2.devkit
 choco install nodejs
+gem install rails --no-document
 {% endhighlight %}
 
 Make sure that all works well by running the application generator command.
@@ -162,29 +165,7 @@ cd railsgirls
 rails server
 {% endhighlight %}
 
-### *2.* Update your PATH to have atom in it
-
-Go to Control Panel
-
-Click on System Properties -> Advanced System Settings -> Advanced -> Environment Variables.
-
-Create a new system variable called ATOM, that will point to the folder of your  atom installation, a little bit like the screenshot below:
-
-![ATOM variable](/images/system_property.png "ATOM variable in the system properties")
-
-Note: if you're on Windows 10 you just add this to your PATH directly via New :)
-
-Click OK to set the variable.
-
-Note: if you're on Windows 10 you won't need to do this :)
-
-Open the PATH variable and append:
-
-{% highlight sh %}
-;%ATOM%
-{% endhighlight %}
-
-### *3.* Update your browser
+### *2.* Update your browser
 
 If you use Internet Explorer, we recommend installing [Firefox](mozilla.org/firefox) or [Google Chrome](google.com/chrome).
 
